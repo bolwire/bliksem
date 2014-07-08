@@ -1,0 +1,23 @@
+c:\users\james\documents\visual studio 2013\Projects\Bliksem\Bliksem\bin\Debug\Bliksem.exe.config
+c:\users\james\documents\visual studio 2013\Projects\Bliksem\Bliksem\obj\Debug\Bliksem.csprojResolveAssemblyReference.cache
+c:\users\james\documents\visual studio 2013\Projects\Bliksem\Bliksem\obj\Debug\Bliksem.Form1.resources
+c:\users\james\documents\visual studio 2013\Projects\Bliksem\Bliksem\obj\Debug\Bliksem.OutputManager.resources
+c:\users\james\documents\visual studio 2013\Projects\Bliksem\Bliksem\obj\Debug\Bliksem.Properties.Resources.resources
+c:\users\james\documents\visual studio 2013\Projects\Bliksem\Bliksem\obj\Debug\Bliksem.csproj.GenerateResource.Cache
+c:\users\james\documents\visual studio 2013\Projects\Bliksem\Bliksem\bin\Debug\Bliksem.exe
+c:\users\james\documents\visual studio 2013\Projects\Bliksem\Bliksem\bin\Debug\Bliksem.pdb
+c:\users\james\documents\visual studio 2013\Projects\Bliksem\Bliksem\obj\Debug\Bliksem.exe
+c:\users\james\documents\visual studio 2013\Projects\Bliksem\Bliksem\obj\Debug\Bliksem.pdb
+C:\My Projects\Bilksem\Bliksem\bin\Debug\Bliksem.exe.config
+C:\My Projects\Bilksem\Bliksem\obj\Debug\Bliksem.exe
+C:\My Projects\Bilksem\Bliksem\obj\Debug\Bliksem.pdb
+C:\My Projects\Bilksem\Bliksem\bin\Debug\Bliksem.exe
+C:\My Projects\Bilksem\Bliksem\bin\Debug\Bliksem.pdb
+C:\My Projects\Bilksem\Bliksem\obj\Debug\Bliksem.csprojResolveAssemblyReference.cache
+C:\My Projects\Bilksem\Bliksem\obj\Debug\Bliksem.OutputManager.resources
+C:\My Projects\Bilksem\Bliksem\obj\Debug\Bliksem.Properties.Resources.resources
+C:\My Projects\Bilksem\Bliksem\obj\Debug\Bliksem.csproj.GenerateResource.Cache
+C:\My Projects\Bilksem\Bliksem\obj\Debug\Bliksem.ScheduleManager.resources
+C:\My Projects\Bilksem\Bliksem\obj\Debug\Bliksem.SerialPortSetup.resources
+C:\My Projects\Bilksem\Bliksem\obj\Debug\Bliksem.Form1.resources
+C:\My Projects\Bilksem\Bliksem\obj\Debug\Bliksem.LogWindow.resources
