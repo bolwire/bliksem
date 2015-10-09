@@ -34,6 +34,8 @@
 			this.serialPortSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editSchedulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editOutputsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.logWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tmr_UpdateStateButtons = new System.Windows.Forms.Timer(this.components);
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.lbl_state1 = new System.Windows.Forms.Label();
@@ -133,6 +135,8 @@
 			this.lbl_output9 = new System.Windows.Forms.Label();
 			this.tmr_CheckSchedule = new System.Windows.Forms.Timer(this.components);
 			this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.showCalendarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -158,7 +162,10 @@
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.serialPortSetupToolStripMenuItem,
             this.editSchedulesToolStripMenuItem,
-            this.editOutputsToolStripMenuItem});
+            this.editOutputsToolStripMenuItem,
+            this.settingsToolStripMenuItem,
+            this.logWindowToolStripMenuItem,
+            this.showCalendarToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(996, 24);
@@ -185,6 +192,20 @@
 			this.editOutputsToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
 			this.editOutputsToolStripMenuItem.Text = "Edit Outputs";
 			this.editOutputsToolStripMenuItem.Click += new System.EventHandler(this.editOutputsToolStripMenuItem_Click);
+			// 
+			// settingsToolStripMenuItem
+			// 
+			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+			this.settingsToolStripMenuItem.Text = "Settings";
+			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+			// 
+			// logWindowToolStripMenuItem
+			// 
+			this.logWindowToolStripMenuItem.Name = "logWindowToolStripMenuItem";
+			this.logWindowToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+			this.logWindowToolStripMenuItem.Text = "Log Window";
+			this.logWindowToolStripMenuItem.Click += new System.EventHandler(this.logWindowToolStripMenuItem_Click);
 			// 
 			// tmr_UpdateStateButtons
 			// 
@@ -1174,6 +1195,19 @@
 			this.tmr_CheckSchedule.Interval = 1000;
 			this.tmr_CheckSchedule.Tick += new System.EventHandler(this.tmr_CheckSchedule_Tick);
 			// 
+			// notifyIcon
+			// 
+			this.notifyIcon.Text = "Blikesem 2015";
+			this.notifyIcon.Visible = true;
+			this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+			// 
+			// showCalendarToolStripMenuItem
+			// 
+			this.showCalendarToolStripMenuItem.Name = "showCalendarToolStripMenuItem";
+			this.showCalendarToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+			this.showCalendarToolStripMenuItem.Text = "Show Calendar";
+			this.showCalendarToolStripMenuItem.Click += new System.EventHandler(this.showCalendarToolStripMenuItem_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1200,8 +1234,9 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "Form1";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Bliksem Control Center";
+			this.Text = "Bliksem Control Center (2015)";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Bliksem_OnFormClosing);
+			this.Resize += new System.EventHandler(this.Form1_Resize);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.panel1.ResumeLayout(false);
@@ -1331,6 +1366,10 @@
 		private System.Windows.Forms.ToolStripMenuItem editSchedulesToolStripMenuItem;
 		private System.Windows.Forms.BindingSource bindingSource1;
 		private System.Windows.Forms.ToolStripMenuItem editOutputsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem logWindowToolStripMenuItem;
+		private System.Windows.Forms.NotifyIcon notifyIcon;
+		private System.Windows.Forms.ToolStripMenuItem showCalendarToolStripMenuItem;
 	}
 }
 

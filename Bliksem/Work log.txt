@@ -1,0 +1,52 @@
+﻿* = Item completed
+
+Changes made 2015:
+* Refractored all code as needed to match naming rules
+
+* Added option to log window to save to a txt file, with follow up dialog to open the log
+- allows for printing from notepad if desired
+
+*Added settings form, settings are:
+-Minimize to system tray
+-Confirm application close
+-Open log window on start
+-Option custom caption for main window
+
+*Added method calls to update the information on the main form after the SaveSettings() method finishes primary work
+-This is also listed under bug fixes, it should have been there but wasn't
+
+*Made improvements to schedule class for starting and stopping schedules.
+
+*Calendar to display schedules
+-Ongoing improvments to this feature
+
+Bug fixes 2015:
+*Fixed attemp to access disposed log window if it was closed and reopened
+*Output names not updated on main form until application is restarted
+*input enable/disable not always updating on main form in some cases(when timer not running due to invalid com port was one)
+
+
+Misc items:
+*Split Class.cs into individual classes and refractor resulting classes to match naming rules as other areas have been done
+
+Work in progress:
+Work on using calendar to edit/add/delete schedules as well
+
+
+TODO:
+
+Improve output channel selection in ScheduleManager.cs in regards to the combobox, it should use selectedindex rather than the
+current method
+
+
+make a schedule troubleshooter tool that steps hour by hour and checks all schedules to see if any should start/end
+print the results to a log window could be done with start date and hour and then .AddHour(1) in a forloop
+
+for (dt = dateTime; dt =< endDateTime; dt = dt.AddHour(1))
+{
+foreach (Schedule schedule in _schedules)
+{
+	if (schedule.start) //would start/be running
+	//stop should always return true outside of the running time
+}
+}
