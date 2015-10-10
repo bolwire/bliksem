@@ -185,11 +185,11 @@ namespace Bliksem
 				DataContractSerializer ser = new DataContractSerializer(typeof(SerialPortSettings));
 				_portSettings = (SerialPortSettings)ser.ReadObject(reader);
 			}
-			_port.PortName = _portSettings.PortName;
-			_port.BaudRate = _portSettings.BaudRate;
+			_port.PortName = _portSettings.PortName ?? _port.PortName;
+			_port.BaudRate = _portSettings.BaudRate == 0 ? 9600 : _portSettings.BaudRate;
 			_port.Parity = _portSettings.Parity;
-			_port.DataBits = _portSettings.DataBits;
-			_port.StopBits = _portSettings.StopBits;
+			_port.DataBits = _portSettings.DataBits == 0 ? 8 : _portSettings.DataBits;
+			_port.StopBits = _portSettings.StopBits == StopBits.None ? StopBits.One : _portSettings.StopBits;
 		}
 
 		#endregion Settings loading & saving

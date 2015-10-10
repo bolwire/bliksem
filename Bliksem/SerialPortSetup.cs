@@ -35,6 +35,7 @@ namespace Bliksem
 
 			comboBoxParity.Items.AddRange(Enum.GetValues(typeof(Parity)).Cast<object>().ToArray());
 			comboBoxStopBits.Items.AddRange(Enum.GetValues(typeof(StopBits)).Cast<object>().ToArray());
+			comboBoxStopBits.Items.Remove(StopBits.None);
 
 			//set our text value
 			configuredPortValueLabel.Text = serialPort != null ? serialPort.PortName : "None";
