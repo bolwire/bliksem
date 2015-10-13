@@ -486,8 +486,12 @@ namespace Bliksem
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
+
 			Color c1 = Color.FromArgb(190, Color.LightBlue);
 			Color c2 = Color.FromArgb(190, Color.DarkBlue);
+
+			if (ClientRectangle.Width == 0 || ClientRectangle.Height == 0)
+				return;
 
 			Brush b = new System.Drawing.Drawing2D.LinearGradientBrush(ClientRectangle, c1, c2, 90);
 			e.Graphics.FillRectangle(b, ClientRectangle);
