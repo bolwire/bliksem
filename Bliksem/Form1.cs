@@ -10,6 +10,7 @@ using System.Xml;
 using System.Runtime.Serialization;
 using System.IO;
 using Bliksem.Properties;
+using Bliksem.UserControls;
 
 namespace Bliksem
 {
@@ -29,15 +30,6 @@ namespace Bliksem
 
 		#endregion File paths
 
-		#region Control Arrays
-
-		//private readonly Label[] _outputLabels;
-		private readonly Label[] _nameLabels;
-		private readonly Label[] _stateLabels;
-		private readonly Button[] _onoffButtons;
-
-		#endregion Control Arrays
-
 		private LogWindow _logwindow = new LogWindow();
 		private List<Channels> _outputs = new List<Channels>();
 		private List<Schedule> _schedules = new List<Schedule>();
@@ -45,6 +37,7 @@ namespace Bliksem
 		private SerialPortSettings _portSettings = new SerialPortSettings();
 		private readonly string[] _outputStates = new String[16];
 		private readonly string[] _myPackets = new String[18];
+		private readonly OutputControl[] _outputControls = new OutputControl[16];
 		private string _currentPacket;
 		private string _lastPacket;
 
@@ -66,19 +59,12 @@ namespace Bliksem
 			//test_form testForm = new test_form();
 			//testForm.Show();
 
-			_logwindow.AddLog("Populating arrays");
-
-			//_outputLabels = new[] { lbl_output1, lbl_output2, lbl_output3, lbl_output4, lbl_output5, lbl_output6, lbl_output7, lbl_output8,
-			//								lbl_output9, lbl_output10, lbl_output11, lbl_output12, lbl_output13, lbl_output14, lbl_output15, lbl_output16};
-			
-			_nameLabels = new[] { lbl_name1, lbl_name2, lbl_name3, lbl_name4, lbl_name5, lbl_name6, lbl_name7, lbl_name8,
-											lbl_name9, lbl_name10, lbl_name11, lbl_name12, lbl_name13, lbl_name14, lbl_name15, lbl_name16};
-			_stateLabels = new[] { lbl_state1, lbl_state2, lbl_state3, lbl_state4, lbl_state5, lbl_state6, lbl_state7, lbl_state8,
-											lbl_state9, lbl_state10, lbl_state11, lbl_state12, lbl_state13, lbl_state14, lbl_state15, lbl_state16};
-			_onoffButtons = new[] { btn_onoff1, btn_onoff2, btn_onoff3, btn_onoff4, btn_onoff5, btn_onoff6, btn_onoff7, btn_onoff8,
-											btn_onoff9, btn_onoff10, btn_onoff11, btn_onoff12, btn_onoff13, btn_onoff14, btn_onoff15, btn_onoff16};
-			Button[] enableButtons = { btn_enable1, btn_enable2, btn_enable3, btn_enable4, btn_enable5, btn_enable6, btn_enable7, btn_enable8,
-				btn_enable9, btn_enable10, btn_enable11, btn_enable12, btn_enable13, btn_enable14, btn_enable15, btn_enable16};
+			_outputControls = new[]
+			{
+				outputControl1, outputControl2, outputControl3, outputControl4, outputControl5, outputControl6, outputControl7,
+				outputControl8, outputControl9, outputControl10, outputControl11, outputControl12, outputControl13, outputControl14,
+				outputControl15, outputControl16
+			};
 
 			
 			//Do we have a dataFolder ?
@@ -113,15 +99,14 @@ namespace Bliksem
 			for (int i = 0; i < 16; i++)
 			{
 				_outputStates[i] = "00"; //Outputs are off
-				_nameLabels[i].Text = _outputs[i].ChannelName;
-				_onoffButtons[i].Tag = i;
-				enableButtons[i].Tag = i;
-				_onoffButtons[i].Click += onoffButton_Click;
-				enableButtons[i].Click += enableButton_Click;
+				_outputControls[i].OutputName = _outputs[i].ChannelName;
 			}
 
 			_logwindow.AddLog("Initialization Completed");
 			_logwindow.AddLog("Ready");
+
+			OutputControl.ToggleOutputEnable += outputControlEnableToggle_Click;
+			OutputControl.ToggleOutputOn += outputControlOnToggle_Click;
 		}
 
 		#endregion Initialization
@@ -194,34 +179,86 @@ namespace Bliksem
 
 		#endregion Settings loading & saving
 
+		private void outputControlEnableToggle_Click(object sender, EventArgs e)
+		{
+			OutputControl output = (OutputControl) sender;
+
+			//Disable
+			if (_outputs[output.ArrayIndex].ChannelEnabled)
+			{
+				_outputs[output.ArrayIndex].ChannelEnabled = false;
+				output.SetEnableToggleText("Enable");
+				output.State = OutputState.Disabled;
+				_logwindow.AddLog("Disable: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
+			}
+			
+			//Enable
+			else
+			{
+				_outputs[output.ArrayIndex].ChannelEnabled = true;
+				output.SetEnableToggleText("Disable");
+				output.State = OutputState.Enabled;
+				_logwindow.AddLog("Enable: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
+			}
+			UpdateStates();
+		}
+
+		private void outputControlOnToggle_Click(object sender, EventArgs e)
+		{
+			OutputControl output = (OutputControl) sender;
+
+			if (!_outputs[output.ArrayIndex].ChannelEnabled)
+				return;
+
+			//Turn off
+			if (_outputStates[output.ArrayIndex] == "FF")
+			{
+				_outputStates[output.ArrayIndex] = "00"; //Output off
+				output.State = OutputState.Enabled;
+				output.SetOnToggleText("Turn On");
+				_logwindow.AddLog("Toggle Off: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
+			}
+			
+			//Turn on
+			else
+			{
+				_outputStates[output.ArrayIndex] = "FF"; //Output on
+				output.State = OutputState.On;
+				output.SetOnToggleText("Turn Off");
+				_logwindow.AddLog("Toggle On: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
+			}
+			UpdateStates();
+
+		}
+
 		private void UpdateStates()
 		{
 			_currentPacket = "";
 			for (int i = 0; i < 16; i++)
 			{
-				_nameLabels[i].Text = _outputs[i].ChannelName;
+				_outputControls[i].OutputName = _outputs[i].ChannelName;
 				_currentPacket = _currentPacket + _outputStates[i];
 				if (_outputs[i].ChannelEnabled)
 				{
+					//Output is off
 					if (_outputStates[i] == "00")
 					{
-						_stateLabels[i].BackColor = Color.Lime;
-						_stateLabels[i].Text = @"OFF";
-						_onoffButtons[i].Text = @"Turn On";
-						_onoffButtons[i].BackColor = Color.Lime;
+						_outputControls[i].State = OutputState.Enabled;
+						_outputControls[i].SetOnToggleText("Turn On");
 					}
+					
+					//Output is on
 					if (_outputStates[i] == "FF")
 					{
-						_stateLabels[i].BackColor = Color.Red;
-						_stateLabels[i].Text = @"ON";
-						_onoffButtons[i].Text = @"Turn Off";
-						_onoffButtons[i].BackColor = Color.Red;
+						_outputControls[i].State = OutputState.On;
+						_outputControls[i].SetOnToggleText("Turn Off");
 					}
 				}
+
 				if (!_outputs[i].ChannelEnabled)
 				{
-					_stateLabels[i].BackColor = Color.Gray;
-					_onoffButtons[i].BackColor = Color.Gray;
+					_outputControls[i].State = OutputState.Disabled;
+					_outputControls[i].SetEnableToggleText("Enable");
 					_outputStates[i] = "00"; //It's disabled, lets just make sure its off as well
 				}
 			}
@@ -280,17 +317,6 @@ namespace Bliksem
 			}
 		}
 
-		/*
-		 * This isn't used anymore ?
-		private IEnumerable<byte> GetBytesFromByteString(string s)
-		{
-			for (int index = 0; index < s.Length; index += 2)
-			{
-				yield return Convert.ToByte(s.Substring(index, 2), 16);
-			}
-		}
-		 */
-
 		private void CheckSchedules()
 		{
 			for (int i = 0; i < _schedules.Count(); i++)
@@ -318,53 +344,15 @@ namespace Bliksem
 
 		private void PopulateNameLabels()
 		{
-			int i = 0;
-			foreach (Label nameLabel in _nameLabels)
+			for (int i = 0; i < 16; i++)
 			{
-				nameLabel.Text = _outputs[i].ChannelName;
-				i++;
+				_outputControls[i].OutputName = _outputs[i].ChannelName;
 			}
 		}
 
 		#endregion Private Methods
 
 		#region Event Handlers
-
-		private void enableButton_Click(object sender, EventArgs e)
-		{
-			if (_outputs[(int)((Button)sender).Tag].ChannelEnabled)
-			{
-				_outputs[(int)((Button)sender).Tag].ChannelEnabled = false;
-				((Button)sender).Text = @"Enable";
-				_logwindow.AddLog("Disable: " + _outputs[(int)((Button)sender).Tag].ChannelNumber + "." + _outputs[(int)((Button)sender).Tag].ChannelName);
-			}
-			else
-			{
-				_outputs[(int)((Button)sender).Tag].ChannelEnabled = true;
-				((Button)sender).Text = @"Disable";
-				_logwindow.AddLog("Enable: " + _outputs[(int)((Button)sender).Tag].ChannelNumber + "." + _outputs[(int)((Button)sender).Tag].ChannelName);
-			}
-			UpdateStates();
-		}
-
-		private void onoffButton_Click(object sender, EventArgs e)
-		{
-			if (_outputs[(int)((Button)sender).Tag].ChannelEnabled)
-			{
-				((Button)sender).BackColor = Color.HotPink;
-				if (_outputStates[(int)((Button)sender).Tag] == "FF")
-				{
-					_outputStates[(int)((Button)sender).Tag] = "00"; //Output off
-					_logwindow.AddLog("Toggle Off: " + _outputs[(int)((Button)sender).Tag].ChannelNumber + "." + _outputs[(int)((Button)sender).Tag].ChannelName);
-				}
-				else
-				{
-					_outputStates[(int)((Button)sender).Tag] = "FF"; //Output on
-					_logwindow.AddLog("Toggle On: " + _outputs[(int)((Button)sender).Tag].ChannelNumber + "." + _outputs[(int)((Button)sender).Tag].ChannelName);
-				}
-				UpdateStates();
-			}
-		}
 
 		private void tmr_UpdateStateButtons_Tick(object sender, EventArgs e)
 		{
@@ -506,5 +494,6 @@ namespace Bliksem
 		}
 
 		#endregion Overrides
+
 	}
 }

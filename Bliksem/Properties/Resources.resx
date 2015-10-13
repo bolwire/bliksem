@@ -121,16 +121,16 @@
   <data name="bliksemIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bliksem.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="light off" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\light off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="light on" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\light on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="green_LL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\green_LL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="slider_off_36" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\slider_off_36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="red_LL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\red_LL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="slider_on_36" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\slider_on_36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="yellow_LL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yellow_LL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

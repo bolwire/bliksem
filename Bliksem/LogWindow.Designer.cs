@@ -29,31 +29,37 @@
 		private void InitializeComponent()
 		{
 			this.listBox1 = new System.Windows.Forms.ListBox();
-			this.buttonSaveLog = new System.Windows.Forms.Button();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.saveToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// listBox1
 			// 
-			this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.listBox1.FormattingEnabled = true;
 			this.listBox1.IntegralHeight = false;
-			this.listBox1.Location = new System.Drawing.Point(0, 0);
+			this.listBox1.Location = new System.Drawing.Point(0, 24);
 			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(234, 288);
+			this.listBox1.Size = new System.Drawing.Size(234, 305);
 			this.listBox1.TabIndex = 0;
 			// 
-			// buttonSaveLog
+			// menuStrip1
 			// 
-			this.buttonSaveLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSaveLog.Location = new System.Drawing.Point(119, 294);
-			this.buttonSaveLog.Name = "buttonSaveLog";
-			this.buttonSaveLog.Size = new System.Drawing.Size(103, 23);
-			this.buttonSaveLog.TabIndex = 1;
-			this.buttonSaveLog.Text = "Save to file";
-			this.buttonSaveLog.UseVisualStyleBackColor = true;
-			this.buttonSaveLog.Click += new System.EventHandler(this.buttonSaveLog_Click);
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToFileToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(234, 24);
+			this.menuStrip1.TabIndex = 2;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// saveToFileToolStripMenuItem
+			// 
+			this.saveToFileToolStripMenuItem.Name = "saveToFileToolStripMenuItem";
+			this.saveToFileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+			this.saveToFileToolStripMenuItem.Text = "Save to file";
+			this.saveToFileToolStripMenuItem.Click += new System.EventHandler(this.saveToFileToolStripMenuItem_Click);
 			// 
 			// LogWindow
 			// 
@@ -61,19 +67,26 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
 			this.ClientSize = new System.Drawing.Size(234, 329);
-			this.Controls.Add(this.buttonSaveLog);
 			this.Controls.Add(this.listBox1);
+			this.Controls.Add(this.menuStrip1);
+			this.MainMenuStrip = this.menuStrip1;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(250, 368);
 			this.Name = "LogWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "LogWindow";
+			this.Text = "Bliksem Activity Log";
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
 		#endregion
 
 		private System.Windows.Forms.ListBox listBox1;
-		private System.Windows.Forms.Button buttonSaveLog;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem saveToFileToolStripMenuItem;
 	}
 }

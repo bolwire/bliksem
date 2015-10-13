@@ -73,9 +73,9 @@ namespace Bliksem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap light_off {
+        internal static System.Drawing.Bitmap green_LL {
             get {
-                object obj = ResourceManager.GetObject("light off", resourceCulture);
+                object obj = ResourceManager.GetObject("green_LL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Bliksem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap light_on {
+        internal static System.Drawing.Bitmap red_LL {
             get {
-                object obj = ResourceManager.GetObject("light on", resourceCulture);
+                object obj = ResourceManager.GetObject("red_LL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Bliksem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap slider_off_36 {
+        internal static System.Drawing.Bitmap settings {
             get {
-                object obj = ResourceManager.GetObject("slider_off_36", resourceCulture);
+                object obj = ResourceManager.GetObject("settings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace Bliksem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap slider_on_36 {
+        internal static System.Drawing.Bitmap yellow_LL {
             get {
-                object obj = ResourceManager.GetObject("slider_on_36", resourceCulture);
+                object obj = ResourceManager.GetObject("yellow_LL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

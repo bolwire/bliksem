@@ -37,7 +37,6 @@
 			// 
 			this.button1.FlatAppearance.BorderSize = 0;
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button1.Image = global::Bliksem.Properties.Resources.slider_off_36;
 			this.button1.Location = new System.Drawing.Point(47, 164);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(80, 36);
@@ -48,7 +47,6 @@
 			// pictureBox1
 			// 
 			this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
-			this.pictureBox1.Image = global::Bliksem.Properties.Resources.light_off;
 			this.pictureBox1.Location = new System.Drawing.Point(71, 48);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(24, 36);

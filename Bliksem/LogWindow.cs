@@ -16,9 +16,20 @@ namespace Bliksem
 			listBox1.Items.Add(DateTime.Now + ": " + message);
 		}
 
+		
 		private void buttonSaveLog_Click(object sender, EventArgs e)
 		{
 			using (SaveFileDialog saveFileDialog = new SaveFileDialog {Filter = @"Text File | .txt"})
+			{
+				if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+
+				SaveLogFile(saveFileDialog.FileName);
+			}
+		}
+
+		private void saveToFileToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = @"Text File | .txt" })
 			{
 				if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
 

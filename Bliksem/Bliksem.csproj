@@ -153,6 +153,12 @@
     <Compile Include="test form.Designer.cs">
       <DependentUpon>test form.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\OutputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OutputControl.Designer.cs">
+      <DependentUpon>OutputControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ScheduleCalendar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     <EmbeddedResource Include="test form.resx">
       <DependentUpon>test form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\OutputControl.resx">
+      <DependentUpon>OutputControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ScheduleCalendar.resx">
       <DependentUpon>ScheduleCalendar.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +246,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\green_LL.png" />
+    <None Include="Resources\red_LL.png" />
+    <None Include="Resources\yellow_LL.png" />
     <Content Include="Work log.txt" />
   </ItemGroup>
   <ItemGroup />
