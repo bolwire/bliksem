@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -20,10 +21,12 @@ namespace Bliksem
 
 		#region File paths
 
-		private readonly string _dataFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Bliksem";
-		private readonly string _dataFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Bliksem\\Bliksem.xml";
-		private readonly string _scheduleFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Bliksem\\Schedule.xml";
-		private readonly string _serialportFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Bliksem\\SerialPort.xml";
+		//_dataFolder may be used in places other than the constructor in the future
+		// ReSharper disable once PrivateFieldCanBeConvertedToLocalVariable
+		private readonly string _dataFolder; // = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Bliksem";
+		private readonly string _dataFile; // = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Bliksem\\Bliksem.xml");
+		private readonly string _scheduleFile; // = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Bliksem\\Schedule.xml";
+		private readonly string _serialportFile; // = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Bliksem\\SerialPort.xml";
 		
 		//Not used at this time
 		//private readonly string _logFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Bliksem_log.txt";
@@ -45,9 +48,14 @@ namespace Bliksem
 
 		#region Initialization
 
-		public Form1()
+		public Form1(string dataPath)
 		{
 			InitializeComponent();
+
+			_dataFolder = dataPath;
+			_dataFile = Path.Combine(_dataFolder, "Bliksem.xml");
+			_scheduleFile = Path.Combine(_dataFolder, "Schedule.xml");
+			_serialportFile = Path.Combine(_dataFolder, "SerialPort.xml");
 
 			notifyIcon.Icon = Resources.bliksemIcon;
 

@@ -70,5 +70,17 @@ namespace Bliksem.Properties {
                 this["WindowCaption"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DataPath {
+            get {
+                return ((string)(this["DataPath"]));
+            }
+            set {
+                this["DataPath"] = value;
+            }
+        }
     }
 }
