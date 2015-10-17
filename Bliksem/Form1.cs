@@ -76,21 +76,21 @@ namespace Bliksem
 
 			
 			//Do we have a dataFolder ?
-			_logwindow.AddLog("Checking for data folder");
+			EventLogger.Add("Checking for data folder");
 			if (!Directory.Exists(_dataFolder)) // NO
 			{
-				_logwindow.AddLog("Not found, attempting to create");
+				EventLogger.Add("Not found, attempting to create");
 				Directory.CreateDirectory(_dataFolder); // Make it!
-				_logwindow.AddLog("Data folder created");
+				EventLogger.Add("Data folder created");
 			}
 			else
 			{
-				_logwindow.AddLog("Data folder found");
+				EventLogger.Add("Data folder found");
 			}
 
 			if (!File.Exists(_dataFile))
 			{
-				_logwindow.AddLog("Creating generic file for outputs");
+				EventLogger.Add("Creating generic file for outputs");
 				for (int i = 0; i < 16; i++)
 					_outputs.Add(new Channels((i + 1).ToString(CultureInfo.InvariantCulture), "CH" + (i + 1)));
 				//Now that we've created generic data, save it
@@ -98,20 +98,20 @@ namespace Bliksem
 			}
 			else
 			{
-				_logwindow.AddLog("Loading output configuration file");
+				EventLogger.Add("Loading output configuration file");
 				LoadSettings();
 				//Was setting buttons here
 			}
 
-			_logwindow.AddLog("Populating output control information");
+			EventLogger.Add("Populating output control information");
 			for (int i = 0; i < 16; i++)
 			{
 				_outputStates[i] = "00"; //Outputs are off
 				_outputControls[i].OutputName = _outputs[i].ChannelName;
 			}
 
-			_logwindow.AddLog("Initialization Completed");
-			_logwindow.AddLog("Ready");
+			EventLogger.Add("Initialization Completed");
+			EventLogger.Add("Ready");
 
 			OutputControl.ToggleOutputEnable += outputControlEnableToggle_Click;
 			OutputControl.ToggleOutputOn += outputControlOnToggle_Click;
@@ -197,7 +197,7 @@ namespace Bliksem
 				_outputs[output.ArrayIndex].ChannelEnabled = false;
 				output.SetEnableToggleText("Enable");
 				output.State = OutputState.Disabled;
-				_logwindow.AddLog("Disable: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
+				EventLogger.Add("Disable: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
 			}
 			
 			//Enable
@@ -206,7 +206,7 @@ namespace Bliksem
 				_outputs[output.ArrayIndex].ChannelEnabled = true;
 				output.SetEnableToggleText("Disable");
 				output.State = OutputState.Enabled;
-				_logwindow.AddLog("Enable: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
+				EventLogger.Add("Enable: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
 			}
 			UpdateStates();
 		}
@@ -224,7 +224,7 @@ namespace Bliksem
 				_outputStates[output.ArrayIndex] = "00"; //Output off
 				output.State = OutputState.Enabled;
 				output.SetOnToggleText("Turn On");
-				_logwindow.AddLog("Toggle Off: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
+				EventLogger.Add("Toggle Off: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
 			}
 			
 			//Turn on
@@ -233,7 +233,7 @@ namespace Bliksem
 				_outputStates[output.ArrayIndex] = "FF"; //Output on
 				output.State = OutputState.On;
 				output.SetOnToggleText("Turn Off");
-				_logwindow.AddLog("Toggle On: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
+				EventLogger.Add("Toggle On: " + _outputs[output.ArrayIndex].ChannelNumber + "." + _outputs[output.ArrayIndex].ChannelName);
 			}
 			UpdateStates();
 
@@ -305,7 +305,7 @@ namespace Bliksem
 						tmr_UpdateStateButtons.Enabled = false;
 						tmr_CheckSchedule.Enabled = false;
 						MessageBox.Show(String.Format("The configured COM port: {0} could not be accessed, please verify setup and restart the application.", port.PortName), @"IO Exception", MessageBoxButtons.OK);
-						_logwindow.AddLog("IO Exception: " + port.PortName);
+						EventLogger.Add("IO Exception: " + port.PortName);
 
 					}
 					catch (Exception e)
@@ -313,7 +313,7 @@ namespace Bliksem
 						tmr_UpdateStateButtons.Enabled = false;
 						tmr_CheckSchedule.Enabled = false;
 						MessageBox.Show(String.Format("Error: {0}", e));
-						_logwindow.AddLog("Exception: " + e);
+						EventLogger.Add("Exception: " + e);
 
 					}
 				}
@@ -333,18 +333,18 @@ namespace Bliksem
 				{
 					if (_outputs[int.Parse(_schedules[i].Channel) - 1].ChannelEnabled)
 					{
-						_logwindow.AddLog("Starting Schedule: " + _schedules[i].Name);
+						EventLogger.Add("Starting Schedule: " + _schedules[i].Name);
 						_outputStates[int.Parse(_schedules[i].Channel) - 1] = "FF";
 					}
 					else
 					{
-						_logwindow.AddLog("Schedule: " + _schedules[i].Name + ", ignored because the output channel is disabled");
+						EventLogger.Add("Schedule: " + _schedules[i].Name + ", ignored because the output channel is disabled");
 					}
 				}
 
 				if (_schedules[i].Stop())
 				{
-					_logwindow.AddLog("Stopping Schedule: " + _schedules[i].Name);
+					EventLogger.Add("Stopping Schedule: " + _schedules[i].Name);
 					_outputStates[int.Parse(_schedules[i].Channel) - 1] = "00";
 				}
 			}

@@ -95,6 +95,7 @@
     <Compile Include="CustomControls\ScrollablePanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="EventLogger.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

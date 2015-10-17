@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Bliksem
@@ -10,20 +9,20 @@ namespace Bliksem
 		public LogWindow()
 		{
 			InitializeComponent();
-		}
-		public void AddLog(string message)
-		{
-			listBox1.Items.Add(DateTime.Now + ": " + message);
+
+			EventLogger.NewEventAdded += (eventText) => listBox1.Items.Add(eventText);
+			EventLogger.EventsCleared += () => listBox1.Items.Clear();
+
+			GetEventList();
 		}
 
-		
-		private void buttonSaveLog_Click(object sender, EventArgs e)
+		private void GetEventList()
 		{
-			using (SaveFileDialog saveFileDialog = new SaveFileDialog {Filter = @"Text File | .txt"})
+			listBox1.Items.Clear();
+
+			foreach (string eString in EventLogger.EventList)
 			{
-				if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
-
-				SaveLogFile(saveFileDialog.FileName);
+				listBox1.Items.Add(eString);
 			}
 		}
 
@@ -49,10 +48,21 @@ namespace Bliksem
 			saveFile.Flush();
 			saveFile.Close();
 
-			if (MessageBox.Show(@"Log saved, would you like to view in notepad", @"Log saved", MessageBoxButtons.YesNo,MessageBoxIcon.Question)
-				== DialogResult.Yes)
+			DialogResult result = MessageBox.Show(@"Log saved, would you like to view in notepad", @"Log saved", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			
+			if (result == DialogResult.Yes)
 			{
 				Process.Start(sPath);
+			}
+		}
+
+		private void clearLogToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			DialogResult result = MessageBox.Show(@"Are you sure ?", @"Confirm: Clear log", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+			if (result == DialogResult.Yes)
+			{
+				EventLogger.Clear();
 			}
 		}
 	}

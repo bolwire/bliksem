@@ -31,6 +31,7 @@
 			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.saveToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.clearLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -47,7 +48,8 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToFileToolStripMenuItem});
+            this.saveToFileToolStripMenuItem,
+            this.clearLogToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(234, 24);
@@ -60,6 +62,13 @@
 			this.saveToFileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
 			this.saveToFileToolStripMenuItem.Text = "Save to file";
 			this.saveToFileToolStripMenuItem.Click += new System.EventHandler(this.saveToFileToolStripMenuItem_Click);
+			// 
+			// clearLogToolStripMenuItem
+			// 
+			this.clearLogToolStripMenuItem.Name = "clearLogToolStripMenuItem";
+			this.clearLogToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+			this.clearLogToolStripMenuItem.Text = "Clear log";
+			this.clearLogToolStripMenuItem.Click += new System.EventHandler(this.clearLogToolStripMenuItem_Click);
 			// 
 			// LogWindow
 			// 
@@ -88,5 +97,6 @@
 		private System.Windows.Forms.ListBox listBox1;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem saveToFileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem clearLogToolStripMenuItem;
 	}
 }
