@@ -78,6 +78,7 @@ namespace Bliksem.UserControls
 
 		private static int _instanceCount;
 
+		//There is so much wrong with this, but it works for me
 		public OutputControl()
 		{
 			Interlocked.Increment(ref _instanceCount);
