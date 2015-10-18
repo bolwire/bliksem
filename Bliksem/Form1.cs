@@ -454,7 +454,9 @@ namespace Bliksem
 		{
 			FormSettings settingsForm = new FormSettings();
 			if (settingsForm.ShowDialog() == DialogResult.OK)
+			{
 				Settings.Default.Save();
+			}
 			else
 			{
 				Settings.Default.Reload();

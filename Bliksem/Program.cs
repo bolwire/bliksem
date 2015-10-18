@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bliksem.Properties;
 
@@ -14,7 +12,7 @@ namespace Bliksem
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main(string[] arg)
+		static void Main()
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
@@ -25,6 +23,7 @@ namespace Bliksem
 
 			//Environment.Exit(1);
 
+			/*
 			if (arg.Length > 0)
 			{
 				switch (arg[0])
@@ -52,14 +51,36 @@ namespace Bliksem
 						break;
 				}
 			}
+			 */
 
+			
+			//Do we need to upgrade settings from previous version ?
+			if (Settings.Default.upgrade)
+			{
+				DialogResult upgradeSettings = MessageBox.Show(
+					@"Bliksem needs to upgrade settings from a previous version, click OK to upgrade settings, or Cancel to skip.",
+					@"Upgrade Settings", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+				if (upgradeSettings == DialogResult.OK)
+				{
+					Settings.Default.Upgrade();
+					MessageBox.Show(@"Upgrade complete, no further action is required.");
+				}
+
+				Settings.Default.upgrade = false;
+				Settings.Default.Save();
+			}
+
+			//Determine datafolder to use
 			if (Settings.Default.DataPath.Length > 0 && Directory.Exists(Settings.Default.DataPath))
 			{
 				Application.Run(new Form1(Settings.Default.DataPath));
 			}
 			else
 			{
-				Application.Run(new Form1(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Bliksem")));
+				Settings.Default.DataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Bliksem");
+				Settings.Default.Save();
+				Application.Run(new Form1(Settings.Default.DataPath));
 			}
 		}
 	}

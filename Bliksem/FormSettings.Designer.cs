@@ -35,12 +35,17 @@
 			this.checkBoxMinimizeToTray = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.textBoxWindowCaption = new System.Windows.Forms.TextBox();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.textBoxDataFolder = new System.Windows.Forms.TextBox();
+			this.buttonBrowseFolder = new System.Windows.Forms.Button();
+			this.label2 = new System.Windows.Forms.Label();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonCancel
 			// 
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(15, 120);
+			this.buttonCancel.Location = new System.Drawing.Point(384, 196);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(65, 23);
 			this.buttonCancel.TabIndex = 3;
@@ -50,7 +55,7 @@
 			// buttonOK
 			// 
 			this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.buttonOK.Location = new System.Drawing.Point(86, 120);
+			this.buttonOK.Location = new System.Drawing.Point(455, 196);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 3;
@@ -111,12 +116,53 @@
 			this.textBoxWindowCaption.TabIndex = 5;
 			this.textBoxWindowCaption.Text = global::Bliksem.Properties.Settings.Default.WindowCaption;
 			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.label2);
+			this.groupBox1.Controls.Add(this.buttonBrowseFolder);
+			this.groupBox1.Controls.Add(this.textBoxDataFolder);
+			this.groupBox1.Location = new System.Drawing.Point(12, 120);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(518, 70);
+			this.groupBox1.TabIndex = 6;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Data Save Folder";
+			// 
+			// textBoxDataFolder
+			// 
+			this.textBoxDataFolder.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Bliksem.Properties.Settings.Default, "DataPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxDataFolder.Location = new System.Drawing.Point(6, 43);
+			this.textBoxDataFolder.Name = "textBoxDataFolder";
+			this.textBoxDataFolder.Size = new System.Drawing.Size(431, 20);
+			this.textBoxDataFolder.TabIndex = 0;
+			this.textBoxDataFolder.Text = global::Bliksem.Properties.Settings.Default.DataPath;
+			// 
+			// buttonBrowseFolder
+			// 
+			this.buttonBrowseFolder.Location = new System.Drawing.Point(443, 41);
+			this.buttonBrowseFolder.Name = "buttonBrowseFolder";
+			this.buttonBrowseFolder.Size = new System.Drawing.Size(69, 23);
+			this.buttonBrowseFolder.TabIndex = 7;
+			this.buttonBrowseFolder.Text = "Browse";
+			this.buttonBrowseFolder.UseVisualStyleBackColor = true;
+			this.buttonBrowseFolder.Click += new System.EventHandler(this.buttonBrowseFolder_Click);
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(7, 20);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(310, 13);
+			this.label2.TabIndex = 8;
+			this.label2.Text = "If blank, default location of My Documents\\Bliksem\\ will be used";
+			// 
 			// FormSettings
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(173, 147);
+			this.ClientSize = new System.Drawing.Size(542, 227);
 			this.ControlBox = false;
+			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.textBoxWindowCaption);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.buttonOK);
@@ -127,6 +173,8 @@
 			this.Name = "FormSettings";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Settings";
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -141,5 +189,9 @@
 		private System.Windows.Forms.Button buttonOK;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox textBoxWindowCaption;
+		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.Button buttonBrowseFolder;
+		private System.Windows.Forms.TextBox textBoxDataFolder;
+		private System.Windows.Forms.Label label2;
 	}
 }

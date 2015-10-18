@@ -82,5 +82,17 @@ namespace Bliksem.Properties {
                 this["DataPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool upgrade {
+            get {
+                return ((bool)(this["upgrade"]));
+            }
+            set {
+                this["upgrade"] = value;
+            }
+        }
     }
 }
