@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Bliksem
 {
@@ -20,6 +21,8 @@ namespace Bliksem
 
 		public static void Add(string eventText)
 		{
+			eventText = DateTime.Now + ": " + eventText;
+
 			_eventList.Add(eventText);
 			NewEventAdded(eventText);
 		}
