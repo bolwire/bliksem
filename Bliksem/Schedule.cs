@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using System.Windows.Forms.VisualStyles;
 
 namespace Bliksem
 {
@@ -30,6 +29,8 @@ namespace Bliksem
 		{
 
 		}
+
+		private DateTime _startedDate;
 
 		[DataMember]
 		public string Name { get; set; }
@@ -67,9 +68,28 @@ namespace Bliksem
 			//DateTime endTime = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,EndTime.Hour, EndTime.Minute,EndTime.Second);
 
 			//if (!running || EndTime.ToString("hh:mm:ss tt") != DateTime.Now.ToString("hh:mm:ss tt"))
-			if (!_running || DateTime.Now.TimeOfDay < EndTime.TimeOfDay)
+
+			if (_running)
+			{
+				if (EndTime.TimeOfDay < StartTime.TimeOfDay)
+				{
+					if (DateTime.Now.Date == _startedDate.Date)
+						return false;
+
+					if (DateTime.Now.TimeOfDay < EndTime.TimeOfDay)
+						return false;
+				}
+
+				else if (DateTime.Now.TimeOfDay < EndTime.TimeOfDay)
+				{
+						return false;
+				}
+			}
+
+			//Retruning true causes a log window entry. This makes sure we don't spam the log window when the scedule isn't running.
+			if (!_running)
 				return false;
-			
+
 			_running = false;
 			return true;
 		}
@@ -90,7 +110,11 @@ namespace Bliksem
 			//DateTime endTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, EndTime.Hour, EndTime.Minute, EndTime.Second);
 
 			//if (StartTime.ToString("hh:mm:ss tt") == DateTime.Now.ToString("hh:mm:ss tt"))
-			
+
+			//if this schedule runs past midnight
+			if (EndTime.TimeOfDay < StartTime.TimeOfDay && DateTime.Now.TimeOfDay > StartTime.TimeOfDay)
+				timeOk = true;
+
 			if (DateTime.Now.TimeOfDay > StartTime.TimeOfDay && DateTime.Now.TimeOfDay < EndTime.TimeOfDay)
 				timeOk = true;
 				
@@ -117,14 +141,15 @@ namespace Bliksem
 				dateOk = true;
 
 			if (!Enabled || !timeOk || !dayOk || !dateOk) return false;
-			
+
+			_startedDate = DateTime.Now.Date;
 			_running = true;
 			return true;
 		}
 
 		public bool Equals(Schedule other)
 		{
-			return (String.Equals(Name, other.Name, StringComparison.CurrentCultureIgnoreCase));
+			return other != null && (string.Equals(Name, other.Name, StringComparison.CurrentCultureIgnoreCase));
 		}
 
 		public override string ToString()

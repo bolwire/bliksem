@@ -154,7 +154,7 @@ namespace Bliksem
 
 		private void LoadSettings()
 		{
-			Text = @"Bliksem Control Center (2015)" + (Settings.Default.WindowCaption != "" ? " - " + Settings.Default.WindowCaption : "");
+			Text = @"Bliksem Control Center (2016)" + (Settings.Default.WindowCaption != "" ? " - " + Settings.Default.WindowCaption : "");
 
 			using (FileStream reader = new FileStream(_dataFile, FileMode.Open, FileAccess.Read))
 			{
@@ -469,7 +469,7 @@ namespace Bliksem
 		{
 			if (WindowState != FormWindowState.Minimized || !Settings.Default.MinimizeToTray) return;
 			notifyIcon.BalloonTipText = @"Minimized to system tray";
-			notifyIcon.BalloonTipTitle = @"[Bliksem 2015]";
+			notifyIcon.BalloonTipTitle = @"[Bliksem 2016]";
 			notifyIcon.Visible = true;
 			notifyIcon.ShowBalloonTip(3000);
 			ShowInTaskbar = false;

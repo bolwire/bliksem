@@ -41,6 +41,13 @@
 			this.tmr_CheckSchedule = new System.Windows.Forms.Timer(this.components);
 			this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.outputControl16 = new Bliksem.UserControls.OutputControl();
+			this.outputControl15 = new Bliksem.UserControls.OutputControl();
+			this.outputControl14 = new Bliksem.UserControls.OutputControl();
+			this.outputControl13 = new Bliksem.UserControls.OutputControl();
+			this.outputControl12 = new Bliksem.UserControls.OutputControl();
+			this.outputControl11 = new Bliksem.UserControls.OutputControl();
+			this.outputControl10 = new Bliksem.UserControls.OutputControl();
 			this.outputControl9 = new Bliksem.UserControls.OutputControl();
 			this.outputControl8 = new Bliksem.UserControls.OutputControl();
 			this.outputControl7 = new Bliksem.UserControls.OutputControl();
@@ -50,13 +57,6 @@
 			this.outputControl3 = new Bliksem.UserControls.OutputControl();
 			this.outputControl2 = new Bliksem.UserControls.OutputControl();
 			this.outputControl1 = new Bliksem.UserControls.OutputControl();
-			this.outputControl10 = new Bliksem.UserControls.OutputControl();
-			this.outputControl11 = new Bliksem.UserControls.OutputControl();
-			this.outputControl12 = new Bliksem.UserControls.OutputControl();
-			this.outputControl13 = new Bliksem.UserControls.OutputControl();
-			this.outputControl14 = new Bliksem.UserControls.OutputControl();
-			this.outputControl15 = new Bliksem.UserControls.OutputControl();
-			this.outputControl16 = new Bliksem.UserControls.OutputControl();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
 			this.SuspendLayout();
@@ -132,9 +132,79 @@
 			// 
 			// notifyIcon
 			// 
-			this.notifyIcon.Text = "Blikesem 2015";
+			this.notifyIcon.Text = "Blikesem 2016";
 			this.notifyIcon.Visible = true;
 			this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+			// 
+			// outputControl16
+			// 
+			this.outputControl16.Location = new System.Drawing.Point(289, 279);
+			this.outputControl16.Name = "outputControl16";
+			this.outputControl16.OutputName = "OUTPUT 16";
+			this.outputControl16.OutputNumber = 16;
+			this.outputControl16.Size = new System.Drawing.Size(242, 30);
+			this.outputControl16.State = Bliksem.UserControls.OutputState.Enabled;
+			this.outputControl16.TabIndex = 44;
+			// 
+			// outputControl15
+			// 
+			this.outputControl15.Location = new System.Drawing.Point(289, 243);
+			this.outputControl15.Name = "outputControl15";
+			this.outputControl15.OutputName = "OUTPUT 15";
+			this.outputControl15.OutputNumber = 15;
+			this.outputControl15.Size = new System.Drawing.Size(242, 30);
+			this.outputControl15.State = Bliksem.UserControls.OutputState.Enabled;
+			this.outputControl15.TabIndex = 43;
+			// 
+			// outputControl14
+			// 
+			this.outputControl14.Location = new System.Drawing.Point(289, 207);
+			this.outputControl14.Name = "outputControl14";
+			this.outputControl14.OutputName = "OUTPUT 14";
+			this.outputControl14.OutputNumber = 14;
+			this.outputControl14.Size = new System.Drawing.Size(242, 30);
+			this.outputControl14.State = Bliksem.UserControls.OutputState.Enabled;
+			this.outputControl14.TabIndex = 42;
+			// 
+			// outputControl13
+			// 
+			this.outputControl13.Location = new System.Drawing.Point(289, 171);
+			this.outputControl13.Name = "outputControl13";
+			this.outputControl13.OutputName = "OUTPUT 13";
+			this.outputControl13.OutputNumber = 13;
+			this.outputControl13.Size = new System.Drawing.Size(242, 30);
+			this.outputControl13.State = Bliksem.UserControls.OutputState.Enabled;
+			this.outputControl13.TabIndex = 41;
+			// 
+			// outputControl12
+			// 
+			this.outputControl12.Location = new System.Drawing.Point(289, 135);
+			this.outputControl12.Name = "outputControl12";
+			this.outputControl12.OutputName = "OUTPUT 12";
+			this.outputControl12.OutputNumber = 12;
+			this.outputControl12.Size = new System.Drawing.Size(242, 30);
+			this.outputControl12.State = Bliksem.UserControls.OutputState.Enabled;
+			this.outputControl12.TabIndex = 40;
+			// 
+			// outputControl11
+			// 
+			this.outputControl11.Location = new System.Drawing.Point(289, 99);
+			this.outputControl11.Name = "outputControl11";
+			this.outputControl11.OutputName = "OUTPUT 11";
+			this.outputControl11.OutputNumber = 11;
+			this.outputControl11.Size = new System.Drawing.Size(242, 30);
+			this.outputControl11.State = Bliksem.UserControls.OutputState.Enabled;
+			this.outputControl11.TabIndex = 39;
+			// 
+			// outputControl10
+			// 
+			this.outputControl10.Location = new System.Drawing.Point(289, 63);
+			this.outputControl10.Name = "outputControl10";
+			this.outputControl10.OutputName = "OUTPUT 10";
+			this.outputControl10.OutputNumber = 10;
+			this.outputControl10.Size = new System.Drawing.Size(242, 30);
+			this.outputControl10.State = Bliksem.UserControls.OutputState.Enabled;
+			this.outputControl10.TabIndex = 38;
 			// 
 			// outputControl9
 			// 
@@ -226,76 +296,6 @@
 			this.outputControl1.State = Bliksem.UserControls.OutputState.Enabled;
 			this.outputControl1.TabIndex = 34;
 			// 
-			// outputControl10
-			// 
-			this.outputControl10.Location = new System.Drawing.Point(289, 63);
-			this.outputControl10.Name = "outputControl10";
-			this.outputControl10.OutputName = "OUTPUT 10";
-			this.outputControl10.OutputNumber = 10;
-			this.outputControl10.Size = new System.Drawing.Size(242, 30);
-			this.outputControl10.State = Bliksem.UserControls.OutputState.Enabled;
-			this.outputControl10.TabIndex = 38;
-			// 
-			// outputControl11
-			// 
-			this.outputControl11.Location = new System.Drawing.Point(289, 99);
-			this.outputControl11.Name = "outputControl11";
-			this.outputControl11.OutputName = "OUTPUT 11";
-			this.outputControl11.OutputNumber = 11;
-			this.outputControl11.Size = new System.Drawing.Size(242, 30);
-			this.outputControl11.State = Bliksem.UserControls.OutputState.Enabled;
-			this.outputControl11.TabIndex = 39;
-			// 
-			// outputControl12
-			// 
-			this.outputControl12.Location = new System.Drawing.Point(289, 135);
-			this.outputControl12.Name = "outputControl12";
-			this.outputControl12.OutputName = "OUTPUT 12";
-			this.outputControl12.OutputNumber = 12;
-			this.outputControl12.Size = new System.Drawing.Size(242, 30);
-			this.outputControl12.State = Bliksem.UserControls.OutputState.Enabled;
-			this.outputControl12.TabIndex = 40;
-			// 
-			// outputControl13
-			// 
-			this.outputControl13.Location = new System.Drawing.Point(289, 171);
-			this.outputControl13.Name = "outputControl13";
-			this.outputControl13.OutputName = "OUTPUT 13";
-			this.outputControl13.OutputNumber = 13;
-			this.outputControl13.Size = new System.Drawing.Size(242, 30);
-			this.outputControl13.State = Bliksem.UserControls.OutputState.Enabled;
-			this.outputControl13.TabIndex = 41;
-			// 
-			// outputControl14
-			// 
-			this.outputControl14.Location = new System.Drawing.Point(289, 207);
-			this.outputControl14.Name = "outputControl14";
-			this.outputControl14.OutputName = "OUTPUT 14";
-			this.outputControl14.OutputNumber = 14;
-			this.outputControl14.Size = new System.Drawing.Size(242, 30);
-			this.outputControl14.State = Bliksem.UserControls.OutputState.Enabled;
-			this.outputControl14.TabIndex = 42;
-			// 
-			// outputControl15
-			// 
-			this.outputControl15.Location = new System.Drawing.Point(289, 243);
-			this.outputControl15.Name = "outputControl15";
-			this.outputControl15.OutputName = "OUTPUT 15";
-			this.outputControl15.OutputNumber = 15;
-			this.outputControl15.Size = new System.Drawing.Size(242, 30);
-			this.outputControl15.State = Bliksem.UserControls.OutputState.Enabled;
-			this.outputControl15.TabIndex = 43;
-			// 
-			// outputControl16
-			// 
-			this.outputControl16.Location = new System.Drawing.Point(289, 279);
-			this.outputControl16.Name = "outputControl16";
-			this.outputControl16.OutputName = "OUTPUT 16";
-			this.outputControl16.OutputNumber = 16;
-			this.outputControl16.Size = new System.Drawing.Size(242, 30);
-			this.outputControl16.State = Bliksem.UserControls.OutputState.Enabled;
-			this.outputControl16.TabIndex = 44;
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,7 +322,7 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "Form1";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Bliksem Control Center (2015)";
+			this.Text = "Bliksem Control Center (2016)";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Bliksem_OnFormClosing);
 			this.Resize += new System.EventHandler(this.Form1_Resize);
 			this.menuStrip1.ResumeLayout(false);
